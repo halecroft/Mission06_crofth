@@ -12,10 +12,12 @@ namespace Mission06_crofth.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private MovieContext _movieContext { get; set; }
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, MovieContext movieContext)
         {
             _logger = logger;
+            _movieContext = movieContext;
         }
 
         public IActionResult Index()
@@ -32,7 +34,17 @@ namespace Mission06_crofth.Controllers
         [HttpPost]
         public IActionResult MovieForm (Movie movie)
         {
-            return View("MovieSubmitted", movie);
+            if (ModelState.IsValid)
+            {
+                _movieContext.Add(movie);
+                _movieContext.SaveChanges();
+                return View("MovieSubmitted", movie);
+            }
+            else
+            {
+                return View();
+            }
+            
         }
 
         public IActionResult Podcasts ()

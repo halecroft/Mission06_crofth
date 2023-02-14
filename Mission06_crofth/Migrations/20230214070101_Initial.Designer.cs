@@ -8,7 +8,7 @@ using Mission06_crofth.Models;
 namespace Mission06_crofth.Migrations
 {
     [DbContext(typeof(MovieContext))]
-    [Migration("20230214065755_Initial")]
+    [Migration("20230214070101_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,7 +54,7 @@ namespace Mission06_crofth.Migrations
 
                     b.HasKey("MovieId");
 
-                    b.ToTable("movies");
+                    b.ToTable("Movies");
                 });
 #pragma warning restore 612, 618
         }

@@ -7,7 +7,7 @@ namespace Mission06_crofth.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "movies",
+                name: "Movies",
                 columns: table => new
                 {
                     MovieId = table.Column<int>(nullable: false)
@@ -23,14 +23,14 @@ namespace Mission06_crofth.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_movies", x => x.MovieId);
+                    table.PrimaryKey("PK_Movies", x => x.MovieId);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "movies");
+                name: "Movies");
         }
     }
 }
