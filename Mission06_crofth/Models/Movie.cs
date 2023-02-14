@@ -4,6 +4,10 @@ namespace Mission06_crofth.Models
 {
     public class Movie
     {
+        [Key]
+        [Required]
+        public int MovieId { get; set; }
+
         [Required]
         public string Category { get; set; }
 
