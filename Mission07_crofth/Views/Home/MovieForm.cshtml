@@ -46,7 +46,9 @@
         <label asp-for="Notes">Notes</label>
         <input asp-for="Notes" /><br>
 
-        <button type="submit">Add Movie</button>
+        <input type="hidden" asp-for="MovieId" />
+
+        <button type="submit">Submit Movie</button>
 
         <div asp-validation-summary="All"></div>
     </form>

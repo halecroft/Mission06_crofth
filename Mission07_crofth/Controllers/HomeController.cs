@@ -28,7 +28,7 @@ namespace Mission07_crofth.Controllers
         public IActionResult MovieForm()
         {
             ViewBag.Categories = _movieContext.Categories.ToList();
-            return View();
+            return View(new Movie());
         }
 
         [HttpPost]
@@ -70,7 +70,7 @@ namespace Mission07_crofth.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(Movie movie)
+        public IActionResult Edit (Movie movie, int id)
         {
             if (ModelState.IsValid)
             {
@@ -86,9 +86,20 @@ namespace Mission07_crofth.Controllers
             }
         }
 
-        public IActionResult Delete ()
+        [HttpGet]
+        public IActionResult Delete (int id)
         {
-            return View();
+            var movie = _movieContext.Movies.Single(x => x.MovieId == id);
+            return View(movie);
+        }
+
+        [HttpPost]
+        public IActionResult Delete (Movie movie)
+        {
+            _movieContext.Movies.Remove(movie);
+            _movieContext.SaveChanges();
+
+            return RedirectToAction("MovieList");
         }
     }
 }

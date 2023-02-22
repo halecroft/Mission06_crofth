@@ -8,7 +8,7 @@ using Mission07_crofth.Models;
 namespace Mission07_crofth.Migrations
 {
     [DbContext(typeof(MovieContext))]
-    [Migration("20230222055330_Initial")]
+    [Migration("20230222075327_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
