@@ -42,7 +42,8 @@ namespace Mission07_crofth.Controllers
             }
             else
             {
-                return View();
+                ViewBag.Categories = _movieContext.Categories.ToList();
+                return View(movie);
             }
 
         }
@@ -69,7 +70,7 @@ namespace Mission07_crofth.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit (Movie movie)
+        public IActionResult Edit(Movie movie)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +79,11 @@ namespace Mission07_crofth.Controllers
 
                 return RedirectToAction("MovieList");
             }
-            else { return RedirectToAction("Edit"); }
+            else
+            {
+                ViewBag.Categories = _movieContext.Categories.ToList();
+                return View("MovieForm", movie);
+            }
         }
 
         public IActionResult Delete ()
